@@ -11,16 +11,19 @@ public class Main {
 
         String text = null;
         try {
-            text = new String(Files.readAllBytes(Paths.get("T:\\Pogromist\\TiK\\azaz.txt")));
+            text = new String(Files.readAllBytes(Paths.get("azaz.txt")));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         SingleCharOps first = new SingleCharOps(text);
         DoubleCharOps second = new DoubleCharOps(text);
+        Huffman third = new Huffman(text);
 
         System.out.println(first);
         System.out.println();
         System.out.println(second);
+        System.out.println();
+        System.out.println(third);
     }
 }
