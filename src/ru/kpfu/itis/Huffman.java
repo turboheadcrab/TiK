@@ -14,25 +14,25 @@ public class Huffman {
 
     Huffman(String textToDo) {
         SingleCharOps sco1 = new SingleCharOps(textToDo);
-        PriorityQueue<HuffmanNode> queue = new PriorityQueue<>(sco1.getAmountOfChars().intValue());
+        PriorityQueue<HuffmanNode<Integer>> queue = new PriorityQueue<>(sco1.getAmountOfChars().intValue());
         for (Map.Entry<Integer, Double> entry :
                 sco1.getCharProbabilities().entrySet()) {
-            HuffmanNode node = new HuffmanNode(entry.getValue(), entry.getKey(), null, null);
+            HuffmanNode<Integer> node = new HuffmanNode<>(entry.getValue(), entry.getKey(), null, null);
             queue.add(node);
         }
-        HuffmanNode root = null;
+        HuffmanNode<Integer> root = null;
 
         charCodes = new TreeMap<>();
 
         while (queue.size() > 1) {
 
-            HuffmanNode x = queue.peek();
+            HuffmanNode<Integer> x = queue.peek();
             queue.poll();
 
-            HuffmanNode y = queue.peek();
+            HuffmanNode<Integer> y = queue.peek();
             queue.poll();
 
-            HuffmanNode f = new HuffmanNode(x.getProbability() + y.getProbability(), 0, x, y);
+            HuffmanNode<Integer> f = new HuffmanNode<>(x.getProbability() + y.getProbability(), 0, x, y);
             root = f;
             queue.add(f);
         }
@@ -42,13 +42,11 @@ public class Huffman {
         textToDo.chars().forEach(i -> sb.append(charCodes.get(i)));
         encodedText = sb.toString();
 
-        SingleCharOps sco2 = new SingleCharOps(encodedText);
-
         calculatingSpeed = encodedText.length() / (double) textToDo.length();
 
     }
 
-    private static void printCode(HuffmanNode root, String s, Map<Integer, String> charCodes) {
+    private static void printCode(HuffmanNode<Integer> root, String s, Map<Integer, String> charCodes) {
         if (root.getLeft() == null && root.getRight() == null && root.getCharacter() > 0) {
             charCodes.put(root.getCharacter(), s);
             return;

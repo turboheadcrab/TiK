@@ -3,13 +3,13 @@ package ru.kpfu.itis;
 /**
  * Created by Apraxin Vladimir on 6.3.18.
  */
-public class HuffmanNode implements Comparable<HuffmanNode> {
+public class HuffmanNode<T> implements Comparable<HuffmanNode> {
     private Double probability;
-    private int character;
-    private HuffmanNode left;
-    private HuffmanNode right;
+    private T character;
+    private HuffmanNode<T> left;
+    private HuffmanNode<T> right;
 
-    HuffmanNode(Double probability, int character, HuffmanNode left, HuffmanNode right) {
+    HuffmanNode(Double probability, T character, HuffmanNode<T> left, HuffmanNode<T> right) {
         this.probability = probability;
         this.character = character;
         this.left = left;
@@ -31,15 +31,15 @@ public class HuffmanNode implements Comparable<HuffmanNode> {
         return probability;
     }
 
-    public int getCharacter() {
+    public T getCharacter() {
         return character;
     }
 
-    public HuffmanNode getLeft() {
+    public HuffmanNode<T> getLeft() {
         return left;
     }
 
-    public HuffmanNode getRight() {
+    public HuffmanNode<T> getRight() {
         return right;
     }
 }

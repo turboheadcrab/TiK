@@ -11,7 +11,7 @@ public class Main {
 
         String text = null;
         try {
-            text = new String(Files.readAllBytes(Paths.get("azaz.txt")));
+            text = new String(Files.readAllBytes(Paths.get("graphmontecristo.txt")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -19,11 +19,14 @@ public class Main {
         SingleCharOps first = new SingleCharOps(text);
         DoubleCharOps second = new DoubleCharOps(text);
         Huffman third = new Huffman(text);
+        HuffmanConditional fourth = new HuffmanConditional(text);
 
         System.out.println(first);
         System.out.println();
         System.out.println(second);
         System.out.println();
         System.out.println(third);
+        System.out.println();
+        System.out.println(fourth);
     }
 }
